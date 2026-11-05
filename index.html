@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Siber Güvenlik Şifre Analizi</title>
+  <style> 
+    body {
+      font-family: 'Segoe UI , sans-serif';
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      }
+      .kart {
+        background: #161b22;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0,5);
+        width: 380px;
+        border: 1px solid #30363d;
+
+        .gosterge {
+          margin-top: 20px;
+          padding: 15px;
+          border-radius: 6px;
+          text-align: center;
+          font-size: 15px;
+          display: none;
+
+         }
+        h2 { text-align: center; color: #58a6ff; margin-bottom: 25px; font-size: 22px; }
+        label { font-size: 14px; color: #8b949e; display: block; margin-bottom: 8px; }
+        input {
+          width: 100%;
+          padding: 12px;
+          background-color: #0d1117;
+          border: 1px solid #30363d;
+          color: #fff;
+          border-radius: 6px;
+          box-sizing: border-box;
+          font-size: 16px;
+          outline: none;
+          }
+          .zayif { background-color: rgba(248, 81, 73, 0.15); color: #f85149; border: 1px solid #f85149; }
+          .orta { background-color: rgba(227, 179, 65, 0.15); color: #e3b341; border: 1px solid #e3b341; }
+          .guclu { background-color: rgba(46, 160, 67, 0.15); color: #3fb950; border: 1px solid #3fb950; }
+
+
+  </style> 
+
+</head>
+<body>
+  <div class=""kart">
+  <h2> Şifre Güvenlik Analizi</h2>
+  <label> for="sifre">Şifrenizi Girin:</label>
+  <input type="password" id="sifre" placeholder="Şifre yaz..." oninput="sifreKontrolEt()">
+
+  <div id="sonucKutusu" class="gosterge"></div>
+
+</div>
+
+<script> 
+  function sifreKontrolEt() {
+    let sifre = document.getElementById('sifre').value;
+    let kutu = document.getElementById('sonucKutusu');
+    
+    
+    if (sifre === "") {
+      kutu.style.display = "none";
+      return;
+      }
+      kutu.style.display = "block";
+      let uzunluk = sifre.length;
+
+    
+      if (uzunluk <6) {
+        kutu.className = "gosterge zayif";
+        kutu.innerHTML = "Çok Zayıf! (Bir bilgisayar bunu saniyenin altında kırar)";
+         } else if (uzunluk <10)  {
+          kutu.className = "gosterge orta";
+          kutu.innerHTML = "Orta Güçte (Birkaç saat içinde kırılabilir)";
+           } else {
+            kutu.className ="gosterge guclu";
+            kutu.innerHTML = "Güçlü! (Kırılması yüzyıllar sürer)";
+            }
+       }
+</script>
+</body>
+
+</html>
